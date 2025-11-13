@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <title>公報 XML / ZIP / PDF 轉 Excel</title>
+</head>
+
+<body>
+    <h1>公報 XML / ZIP / PDF 轉 Excel</h1>
+
+    {% if error %}
+    <pre style="color:red; white-space:pre-wrap;">{{ error }}</pre>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <label>選擇檔案（XML / ZIP / PDF，可多選）：</label><br>
+            <!-- ✅ 正常檔案選擇，多選 -->
+            <input type="file" name="files" multiple accept=".xml,.zip,.pdf">
+        </p>
+
+        <p>
+            <label>或選擇整個資料夾上傳：</label><br>
+            <!-- ✅ 資料夾選擇，瀏覽器會開「Select folder to upload」 -->
+            <input type="file" name="folder_files" webkitdirectory directory multiple accept=".xml,.zip,.pdf">
+        </p>
+
+        <button type="submit">上傳並產生結果</button>
+    </form>
+
+
+    <p>
+        說明：<br>
+        - 單一檔案：直接下載一個 Excel。<br>
+        - 多個檔案 / 資料夾：每個檔案各產一個 Excel，最後打包成 zip 下載。<br>
+        - XML / ZIP：會產生 Gazette / Lines / Articles；PDF：會產生 PdfText（含 Type 欄位）。
+    </p>
+</body>
+
+</html>

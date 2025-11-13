@@ -1,0 +1,24 @@
+# === Python 編譯暫存 ===
+__pycache__/
+*.py[cod]
+*.pyo
+
+# === 虛擬環境 ===
+.venv/
+venv/
+env/
+
+# === 機密 / 環境設定 ===
+.env
+*.env
+!.env.example   # 允許範本檔被追蹤
+
+# === DB 檔 ===
+db.sqlite3
+
+# === VSCode 設定 ===
+.vscode/
+
+# === 其他不想上傳的檔案 (可依喜好調整) ===
+*.xlsx
+*.zip
